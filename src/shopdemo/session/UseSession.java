@@ -1,4 +1,4 @@
-package shop.session;
+package shopdemo.session;
 
 import java.io.IOException;
 
