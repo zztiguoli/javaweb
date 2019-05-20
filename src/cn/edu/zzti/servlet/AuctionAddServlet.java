@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.AuctionDAO;
-import cn.edu.zzti.dao.impl.constance.AuctionDAOImplConstance;
+import cn.edu.zzti.dao.impl.constance.AuctionDAOImpl;
 import cn.edu.zzti.entity.AuctionDO;
+import cn.edu.zzti.util.DAOFactory;
 
 /**
  * 商品添加控制层代码
  * Created by guoli on 17/5/14.
  */
 public class AuctionAddServlet extends HttpServlet {
-    AuctionDAO auctionDAO = new AuctionDAOImplConstance();
+    AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");

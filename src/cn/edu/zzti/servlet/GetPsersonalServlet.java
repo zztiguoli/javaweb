@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.PersonalDAO;
-import cn.edu.zzti.dao.impl.constance.PersonalDAOImplConstance;
 import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
+import cn.edu.zzti.util.DAOFactory;
 
 /**
  * Servlet implementation class GetPsersonalServlet
@@ -20,7 +20,7 @@ import cn.edu.zzti.entity.UserDO;
 @WebServlet("/GetPsersonalServlet")
 public class GetPsersonalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	PersonalDAO personalDAO = new PersonalDAOImplConstance();
+	PersonalDAO personalDAO = (PersonalDAO) DAOFactory.getDAO(DAOFactory.PERSONAL_DAO_CLASS_NAME);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

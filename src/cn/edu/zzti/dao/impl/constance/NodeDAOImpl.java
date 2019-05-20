@@ -13,9 +13,9 @@ import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.entity.Node;
 import cn.edu.zzti.entity.UserDO;
 
-public class NodeDAOImplConstance implements NodeDAO{
-	private static UserDAO userDAO = new UserDAOImplConstance();
-	private static ReplyDAO repltDAO = new ReplyDAOImplConstance();
+public class NodeDAOImpl implements NodeDAO{
+	private static UserDAO userDAO = new UserDAOImpl();
+	private static ReplyDAO repltDAO = new ReplyDAOImpl();
 	private static Map<Integer,Node> nodeList = new HashMap<Integer,Node>();
 	private static int maxId=0;//每插入一条数据，maxid+1，删除记录不用修改该值，该值持续增长，类似于数据库的自增长id
 	static{

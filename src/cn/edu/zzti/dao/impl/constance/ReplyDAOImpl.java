@@ -12,13 +12,13 @@ import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.entity.Reply;
 import cn.edu.zzti.entity.UserDO;
 
-public class ReplyDAOImplConstance implements ReplyDAO{
+public class ReplyDAOImpl implements ReplyDAO{
 	/**
 	 * Map下的第一个Integer是帖子的id
 	 * 第二Map的Integer是回复的id
 	 */
 	private static Map<Integer,Map<Integer,Reply>> replyList = new HashMap<Integer,Map<Integer,Reply>>();
-	private static UserDAO userDAO = new UserDAOImplConstance();
+	private static UserDAO userDAO = new UserDAOImpl();
 	private static int maxId=0;//每插入一条数据，maxid+1，删除记录不用修改该值，该值持续增长，类似于数据库的自增长id
 	static{
 		replyList.put(1, new HashMap<Integer,Reply>());

@@ -10,7 +10,7 @@ import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
 
-public class UserDAOImplConstance implements UserDAO {
+public class UserDAOImpl implements UserDAO {
 	static Map<String,UserDO> userList = new HashMap<String,UserDO>();
 
 	static{

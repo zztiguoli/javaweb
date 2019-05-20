@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.UserDAO;
-import cn.edu.zzti.dao.impl.constance.UserDAOImplConstance;
 import cn.edu.zzti.entity.UserDO;
+import cn.edu.zzti.util.DAOFactory;
 @WebServlet("/servlet/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
-	UserDAO userDAO = new UserDAOImplConstance();
+	UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);
 	public String checkLogin(UserDO user) throws SQLException{
 		String errorInfo=null;
 		if(user.getUsername()==null||"".equals(user.getUsername().trim())

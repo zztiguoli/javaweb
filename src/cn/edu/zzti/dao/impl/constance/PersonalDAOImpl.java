@@ -9,20 +9,20 @@ import cn.edu.zzti.entity.UserDO;
  * @version 创建时间：2017年5月14日 下午9:20:18 
  * 类说明 
  */
-public class PersonalDAOImplConstance implements PersonalDAO{
+public class PersonalDAOImpl implements PersonalDAO{
 
 	
 	@Override
 	public PersonalInfoDO getPersonalInfo(String username) {
 		if(username!=null&&!"".equals(username)){
-			return UserDAOImplConstance.userList.get(username).getPi();
+			return UserDAOImpl.userList.get(username).getPi();
 		}
 		return null;
 	}
 
 	@Override
 	public void setPersonalInfo(String username,PersonalInfoDO p) {
-		UserDO u = UserDAOImplConstance.userList.get(username);
+		UserDO u = UserDAOImpl.userList.get(username);
 		if(u!=null){
 			u.setPi(p);
 		}

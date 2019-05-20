@@ -11,15 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.AuctionDAO;
-import cn.edu.zzti.dao.impl.constance.AuctionDAOImplConstance;
+import cn.edu.zzti.dao.impl.constance.AuctionDAOImpl;
 import cn.edu.zzti.entity.AuctionDO;
+import cn.edu.zzti.util.DAOFactory;
+import cn.edu.zzti.util.PathConstence;
 
 /**
  * Created by guoli on 17/5/14.
  */
 @WebServlet("/AuctionListServlet")
 public class AuctionListServlet extends HttpServlet {
-    AuctionDAO auctionDAO = new AuctionDAOImplConstance();
+    AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       

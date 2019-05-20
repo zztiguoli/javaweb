@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.PersonalDAO;
-import cn.edu.zzti.dao.impl.constance.PersonalDAOImplConstance;
+import cn.edu.zzti.dao.impl.constance.PersonalDAOImpl;
 import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
 @WebServlet("/PersonalInfoProcess")
 public class PersonalInfoProcess extends HttpServlet {
-	PersonalDAO personalDAO = new PersonalDAOImplConstance();
+	PersonalDAO personalDAO = new PersonalDAOImpl();
 	
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
