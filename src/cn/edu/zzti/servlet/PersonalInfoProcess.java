@@ -1,6 +1,7 @@
 package cn.edu.zzti.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.PersonalDAO;
 import cn.edu.zzti.dao.impl.constance.PersonalDAOImplConstance;
-import cn.edu.zzti.entity.PersonalInfo;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.PersonalInfoDO;
+import cn.edu.zzti.entity.UserDO;
 @WebServlet("/PersonalInfoProcess")
 public class PersonalInfoProcess extends HttpServlet {
 	PersonalDAO personalDAO = new PersonalDAOImplConstance();
@@ -24,11 +25,11 @@ public class PersonalInfoProcess extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		User u= null;
+		UserDO u= null;
 		if(request.getSession().getAttribute("user")!=null){
-			u = (User)request.getSession().getAttribute("user");
+			u = (UserDO)request.getSession().getAttribute("user");
 			String targetPath = "GetPsersonalServlet";
-			PersonalInfo p = new PersonalInfo();
+			PersonalInfoDO p = new PersonalInfoDO();
 			p.setAge(Integer.parseInt(request.getParameter("age")));
 			p.setGender(request.getParameter("gender"));
 			p.setAddress(request.getParameter("address"));
@@ -37,7 +38,12 @@ public class PersonalInfoProcess extends HttpServlet {
 			p.setHighestEducation(request.getParameter("highestEducation"));
 			p.setGraduateSchool(request.getParameter("graduateSchool"));
 			p.setMajor("major");
-			personalDAO.setPersonalInfo(u.getUsername(), p);
+			try {
+				personalDAO.setPersonalInfo(u.getUsername(), p);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			/*
 			 * 第二种写法，将两个页面的信息都提交给这个业务处理类中，利用session完成数据存储 
 			 */

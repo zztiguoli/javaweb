@@ -1,0 +1,14 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<table>
+<tr>
+	<td><a href="${pageContext.servletContext.contextPath}/web/GetPsersonalServlet">个人中心</a></td>
+</tr>
+
+<tr>
+	<td><a href="${pageContext.servletContext.contextPath}/web/getAllAuction">全部商品</a></td>
+</tr>
+<tr>
+	<td><a href="${pageContext.servletContext.contextPath}/web/CartListServlet">我的购物车</a></td>
+</tr>
+
+</table>

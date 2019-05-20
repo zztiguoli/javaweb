@@ -1,17 +1,16 @@
 package cn.edu.zzti.dao.impl.constance;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.edu.zzti.dao.NodeDAO;
 import cn.edu.zzti.dao.ReplyDAO;
 import cn.edu.zzti.dao.UserDAO;
-import cn.edu.zzti.entity.Node;
 import cn.edu.zzti.entity.Reply;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.UserDO;
 
 public class ReplyDAOImplConstance implements ReplyDAO{
 	/**
@@ -23,16 +22,23 @@ public class ReplyDAOImplConstance implements ReplyDAO{
 	private static int maxId=0;//每插入一条数据，maxid+1，删除记录不用修改该值，该值持续增长，类似于数据库的自增长id
 	static{
 		replyList.put(1, new HashMap<Integer,Reply>());
-		User u =userDAO.getUserByName("admin1");
-		for(int i=0;i<10;i++) {
-			maxId++;
-			Reply r = new Reply(1,
-					"admin1对帖子1的回复"+i,
-					new Date(new Date().getTime()+(i*100000))
-					,u);
-			r.setReplyId(maxId);
-			replyList.get(1).put(maxId, r);
+		UserDO u = null;
+		try {
+			u = userDAO.getUserByName("admin1");
+			for(int i=0;i<10;i++) {
+				maxId++;
+				Reply r = new Reply(1,
+						"admin1对帖子1的回复"+i,
+						new Date(new Date().getTime()+(i*100000))
+						,u);
+				r.setReplyId(maxId);
+				replyList.get(1).put(maxId, r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 
 	@Override

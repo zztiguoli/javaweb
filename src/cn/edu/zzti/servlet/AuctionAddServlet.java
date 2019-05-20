@@ -1,6 +1,7 @@
 package cn.edu.zzti.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.AuctionDAO;
 import cn.edu.zzti.dao.impl.constance.AuctionDAOImplConstance;
-import cn.edu.zzti.entity.Auction;
+import cn.edu.zzti.entity.AuctionDO;
 
 /**
  * 商品添加控制层代码
@@ -24,8 +25,13 @@ public class AuctionAddServlet extends HttpServlet {
         String title = req.getParameter("title");
         String auctionDescription = req.getParameter("auctionDescription");
         String price = req.getParameter("price");
-        Auction auc = new Auction(title,auctionDescription,Float.parseFloat(price));
-        auctionDAO.addAuction(auc);
+        AuctionDO auc = new AuctionDO(title,auctionDescription,Float.parseFloat(price));
+        try {
+			auctionDAO.addAuction(auc);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         resp.sendRedirect(this.getServletContext().getContextPath()+"/auction/list");
 
     }

@@ -2,6 +2,7 @@ package cn.edu.zzti.servlet.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.PersonalDAO;
 import cn.edu.zzti.dao.impl.constance.PersonalDAOImplConstance;
-import cn.edu.zzti.entity.PersonalInfo;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.PersonalInfoDO;
+import cn.edu.zzti.entity.UserDO;
 /**
  * 展现个人信息
  * @author guoli
@@ -41,8 +42,14 @@ public class PersonalInfoView extends HttpServlet {
 		out.println("|<a href='AuctionListServlet'>商品列表</a><br/>");
 		out.println("<br><a href='PersonalPage1'>完善个人信息</a>");
 		String body="还没有完善个人信息 ";
-		User user = (User)request.getSession().getAttribute("user");
-		PersonalInfo p = personalDAO.getPersonalInfo(user.getUsername());//(PersonalInfo)personalObject;
+		UserDO user = (UserDO)request.getSession().getAttribute("user");
+		PersonalInfoDO p = null;
+		try {
+			p = personalDAO.getPersonalInfo(user.getUsername());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//(PersonalInfo)personalObject;
 		
 		if(p!=null){
 			body="<table><tr><td>年龄：</td><td>" + p.getAge()+

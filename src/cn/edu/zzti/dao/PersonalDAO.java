@@ -1,14 +1,28 @@
 package cn.edu.zzti.dao;
 
-import cn.edu.zzti.entity.PersonalInfo;
+import java.sql.SQLException;
+
+import cn.edu.zzti.entity.PersonalInfoDO;
 
 /** 
  * @author 作者 E-mail: 
  * @version 创建时间：2017年5月14日 下午9:18:20 
  * 类说明 
  */
-public interface PersonalDAO {
-	public PersonalInfo getPersonalInfo(String username);
-	public void setPersonalInfo(String username,PersonalInfo p);
+public interface PersonalDAO extends BaseDAO{
+	/**
+	 * 通过用户名查询当前用户的个人信息
+	 * @param username
+	 * @return
+	 * @throws SQLException
+	 */
+	public PersonalInfoDO getPersonalInfo(String username) throws SQLException;
+	/**
+	 * 保存一个用户的个人信息
+	 * @param username
+	 * @param p
+	 * @throws SQLException
+	 */
+	public void setPersonalInfo(String username,PersonalInfoDO p) throws SQLException;
 
 }

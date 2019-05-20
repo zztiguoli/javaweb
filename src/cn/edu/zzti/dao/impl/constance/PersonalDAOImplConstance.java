@@ -1,8 +1,8 @@
 package cn.edu.zzti.dao.impl.constance;
 
 import cn.edu.zzti.dao.PersonalDAO;
-import cn.edu.zzti.entity.PersonalInfo;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.PersonalInfoDO;
+import cn.edu.zzti.entity.UserDO;
 
 /** 
  * @author 作者 E-mail: 
@@ -13,7 +13,7 @@ public class PersonalDAOImplConstance implements PersonalDAO{
 
 	
 	@Override
-	public PersonalInfo getPersonalInfo(String username) {
+	public PersonalInfoDO getPersonalInfo(String username) {
 		if(username!=null&&!"".equals(username)){
 			return UserDAOImplConstance.userList.get(username).getPi();
 		}
@@ -21,8 +21,8 @@ public class PersonalDAOImplConstance implements PersonalDAO{
 	}
 
 	@Override
-	public void setPersonalInfo(String username,PersonalInfo p) {
-		User u = UserDAOImplConstance.userList.get(username);
+	public void setPersonalInfo(String username,PersonalInfoDO p) {
+		UserDO u = UserDAOImplConstance.userList.get(username);
 		if(u!=null){
 			u.setPi(p);
 		}

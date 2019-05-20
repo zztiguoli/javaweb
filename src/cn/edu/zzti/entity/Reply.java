@@ -12,7 +12,7 @@ public class Reply {
 	private int replyId;//回复的id
 	private String content;//回复的内容
 	private Date time;//回复的时间
-	private User author;//帖子回复人
+	private UserDO author;//帖子回复人
 	
 	public int getReplyId() {
 		return replyId;
@@ -38,13 +38,13 @@ public class Reply {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public User getAuthor() {
+	public UserDO getAuthor() {
 		return author;
 	}
-	public void setAuthor(User author) {
+	public void setAuthor(UserDO author) {
 		this.author = author;
 	}
-	public Reply(int nodeId, String content, Date time, User author) {
+	public Reply(int nodeId, String content, Date time, UserDO author) {
 		super();
 		this.nodeId = nodeId;
 		this.content = content;

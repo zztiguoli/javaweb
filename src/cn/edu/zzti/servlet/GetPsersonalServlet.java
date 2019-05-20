@@ -1,6 +1,7 @@
 package cn.edu.zzti.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.PersonalDAO;
 import cn.edu.zzti.dao.impl.constance.PersonalDAOImplConstance;
-import cn.edu.zzti.entity.PersonalInfo;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.PersonalInfoDO;
+import cn.edu.zzti.entity.UserDO;
 
 /**
  * Servlet implementation class GetPsersonalServlet
@@ -32,10 +33,16 @@ public class GetPsersonalServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		User u= null;
+		UserDO u= null;
 		if(request.getSession().getAttribute("user")!=null){
-			u = (User)request.getSession().getAttribute("user");
-			PersonalInfo personal = personalDAO.getPersonalInfo(u.getUsername());
+			u = (UserDO)request.getSession().getAttribute("user");
+			PersonalInfoDO personal = null;
+			try {
+				personal = personalDAO.getPersonalInfo(u.getUsername());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			request.setAttribute("personalInfo", personal);
 			request.getRequestDispatcher( "/PersonalInfoView").forward(request, response);
 		}else{

@@ -1,0 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<table>
+
+<tr>
+	<td><a href="${pageContext.servletContext.contextPath}/manage/auction/auctionAdd.jsp">添加商品</a></td>
+</tr>
+<tr>
+	<td><a href="${pageContext.servletContext.contextPath}/manage/AuctionListServlet">查看商品列表</a></td>
+</tr>
+</table>

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Node {
 	private int id;//帖子的id
 	private String title;//帖子标题
-	private User author;//帖子的作者
+	private UserDO author;//帖子的作者
 	private Date time;//发帖时间
 	private int hot;//帖子的热度，回复的数量
 	private String content;// 帖子的核心内容
@@ -37,17 +37,17 @@ public class Node {
 		this.hot = hot;
 	}
 	
-	public Node(String title, User author, Date time, int hot) {
+	public Node(String title, UserDO author, Date time, int hot) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.time = time;
 		this.hot = hot;
 	}
-	public User getAuthor() {
+	public UserDO getAuthor() {
 		return author;
 	}
-	public void setAuthor(User author) {
+	public void setAuthor(UserDO author) {
 		this.author = author;
 	}
 	

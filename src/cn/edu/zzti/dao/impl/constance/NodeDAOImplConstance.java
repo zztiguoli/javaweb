@@ -1,5 +1,6 @@
 package cn.edu.zzti.dao.impl.constance;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import cn.edu.zzti.dao.NodeDAO;
 import cn.edu.zzti.dao.ReplyDAO;
 import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.entity.Node;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.UserDO;
 
 public class NodeDAOImplConstance implements NodeDAO{
 	private static UserDAO userDAO = new UserDAOImplConstance();
@@ -19,14 +20,21 @@ public class NodeDAOImplConstance implements NodeDAO{
 	private static int maxId=0;//每插入一条数据，maxid+1，删除记录不用修改该值，该值持续增长，类似于数据库的自增长id
 	static{
 		for(int i=0;i<10;i++){
-			User u =userDAO.getUserByName("admin0");
-			Node node = new Node("admin0发布的帖子的标题"+i,
-					u,
-					new Date(new Date().getTime()+(i*100000))
-					,0);
-			maxId++;
-			node.setId(maxId);
-			nodeList.put(maxId, node);
+			UserDO u = null;
+			try {
+				u = userDAO.getUserByName("admin0");
+				Node node = new Node("admin0发布的帖子的标题"+i,
+						u,
+						new Date(new Date().getTime()+(i*100000))
+						,0);
+				maxId++;
+				node.setId(maxId);
+				nodeList.put(maxId, node);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	@Override

@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import cn.edu.zzti.dao.UserDAO;
-import cn.edu.zzti.entity.PersonalInfo;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.PersonalInfoDO;
+import cn.edu.zzti.entity.UserDO;
 
 public class UserDAOImplConstance implements UserDAO {
-	static Map<String,User> userList = new HashMap<String,User>();
+	static Map<String,UserDO> userList = new HashMap<String,UserDO>();
 
 	static{
 		for(int i=0;i<5;i++){
-			User user = new User("admin"+i,"admin"+i);
+			UserDO user = new UserDO("admin"+i,"admin"+i);
 			if(i==0){
-				user.setPi(new PersonalInfo(20, "女", "河南省中原区", "67698021", "test.@163.com", "中原工学院", "硕士", "计算机应用"));
+				user.setPi(new PersonalInfoDO(20, "女", "河南省中原区", "67698021", "test.@163.com", "中原工学院", "硕士", "计算机应用"));
 			}else{
 				user.setPi(null);
 			}
@@ -26,14 +26,14 @@ public class UserDAOImplConstance implements UserDAO {
 	}
 
 	@Override
-	public List<User> getAll() {
-		return new ArrayList<User>(userList.values());
+	public List<UserDO> getAll() {
+		return new ArrayList<UserDO>(userList.values());
 	}
 
 	@Override
-	public User findUser(String username, String password) {
-		Collection<User> c = userList.values();
-		for(User u: c){
+	public UserDO findUser(String username, String password) {
+		Collection<UserDO> c = userList.values();
+		for(UserDO u: c){
 			if(u.getUsername().equals(username)&&u.getPassword().equals(password)){
 				return u;
 			}
@@ -42,7 +42,7 @@ public class UserDAOImplConstance implements UserDAO {
 	}
 
 	@Override
-	public int insertUser(User u) {
+	public int insertUser(UserDO u) {
 		userList.put(u.getUsername(), u);
 		return 1;
 	}
@@ -54,7 +54,7 @@ public class UserDAOImplConstance implements UserDAO {
 	}
 
 	@Override
-	public User getUserByName(String username) {
+	public UserDO getUserByName(String username) {
 		return userList.get(username);
 	}
 }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zzti.entity.Auction;
+import cn.edu.zzti.entity.AuctionDO;
 @WebServlet("/AuctionListView")
 public class AuctionListView extends HttpServlet{
 
@@ -42,8 +42,8 @@ public class AuctionListView extends HttpServlet{
 		Object o = req.getAttribute("auctionList");
 		if(o!=null) {
 			
-			List<Auction> list = (List<Auction>)o;
-			for(Auction auc : list) {
+			List<AuctionDO> list = (List<AuctionDO>)o;
+			for(AuctionDO auc : list) {
 				body.append("<tr>")
 				.append("<td>"+auc.getId()+"</td>")
 				.append("<td>"+auc.getTitle()+"</td>")

@@ -1,6 +1,7 @@
 package cn.edu.zzti.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -11,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.dao.impl.constance.UserDAOImplConstance;
-import cn.edu.zzti.entity.User;
+import cn.edu.zzti.entity.UserDO;
 @WebServlet("/servlet/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
 	UserDAO userDAO = new UserDAOImplConstance();
-	public String checkLogin(User user){
+	public String checkLogin(UserDO user) throws SQLException{
 		String errorInfo=null;
 		if(user.getUsername()==null||"".equals(user.getUsername().trim())
 				||user.getPassword()==null||"".equals(user.getPassword().trim())){
@@ -39,19 +40,26 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user = new User(username,password,new Date());
-		String error = checkLogin(user);
-		
-		String targetPath = request.getContextPath();
-		if(error==null){
-			request.getSession().setAttribute("user", user);
-			targetPath = "/IndexView";;
-			request.getRequestDispatcher(targetPath).forward(request, response);
-		}else{
-			request.setAttribute("error", error);
-			targetPath = request.getContextPath() + "/admin/LoginPageView";
-			response.sendRedirect(targetPath);
+		UserDO user = new UserDO(username,password,new Date());
+		String error = "";
+		try {
+			error = checkLogin(user);
+			String targetPath = request.getContextPath();
+			if(error==null){
+				request.getSession().setAttribute("user", user);
+				targetPath = "/IndexView";;
+				request.getRequestDispatcher(targetPath).forward(request, response);
+			}else{
+				request.setAttribute("error", error);
+				targetPath = request.getContextPath() + "/admin/LoginPageView";
+				response.sendRedirect(targetPath);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		
 		
 	}
