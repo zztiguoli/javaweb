@@ -24,7 +24,8 @@ public class AuctionListServlet extends HttpServlet {
     AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      
+        String type = req.getParameter("type");
+        String uri ="jspByJavacode/" + ("1".equals(type) ? "/viewForUser":"/manager");
         List<AuctionDO> list =null;
 		try {
 			list = auctionDAO.getAll();
@@ -33,7 +34,7 @@ public class AuctionListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
         req.setAttribute("auctionList",list);
-        req.getRequestDispatcher("/AuctionListView").forward(req,resp);
+        req.getRequestDispatcher(uri+"/getAllAuction.jsp").forward(req,resp);
     }
 
     @Override

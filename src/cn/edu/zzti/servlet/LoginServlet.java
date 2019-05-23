@@ -1,7 +1,9 @@
 package cn.edu.zzti.servlet;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -24,9 +26,9 @@ public class LoginServlet extends HttpServlet {
 			errorInfo = "用户名或者密码不能为空";
 		}else if(userDAO.findUser(user.getUsername(), user.getPassword())==null){
 			errorInfo = "用户名或者密码不正确";
-			
+
 		}
-		
+
 		return errorInfo;
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,27 +43,31 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserDO user = new UserDO(username,password,new Date());
+		String type = request.getParameter("type");
+		String uri ="jspByJavacode/" + ("1".equals(type) ? "/viewForUser":"/manager");
+
 		String error = "";
 		try {
 			error = checkLogin(user);
 			String targetPath = request.getContextPath();
 			if(error==null){
 				request.getSession().setAttribute("user", user);
-				targetPath = "/IndexView";;
+				targetPath = "/AuctionListServlet";;
 				request.getRequestDispatcher(targetPath).forward(request, response);
 			}else{
-				request.setAttribute("error", error);
-				targetPath = request.getContextPath() + "/admin/LoginPageView";
+				//request.setAttribute("error", error);
+
+				targetPath = request.getContextPath() + uri + "/login.jsp?error="+ URLEncoder.encode(error,"UTF-8");
 				response.sendRedirect(targetPath);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
+
+
 	}
 
 }
