@@ -1,4 +1,4 @@
-package cn.edu.zzti.servlet.web;
+package cn.edu.zzti.servlet;
 
 import cn.edu.zzti.dao.AuctionDAO;
 import cn.edu.zzti.dao.TemporaryCartDAO;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 /**
  * Created by guoli on 17/7/10.
  */
-@WebServlet(name="AddCartServlet",urlPatterns = {"/web/AddCartServlet"})
+@WebServlet(name="AddCartServlet",urlPatterns = { "/servlet/AddCartServlet"})
 public class AddCartServlet extends HttpServlet {
     private TemporaryCartDAO temporaryCartDAO = (TemporaryCartDAO) DAOFactory.getDAO(DAOFactory.TEMPORARY_CART_DAO_CLASS_NAME);
     private AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
@@ -26,7 +26,7 @@ public class AddCartServlet extends HttpServlet {
         String basePath = request.getContextPath()+PathConstence.W_SERVLET_BASE;
         String aucId = request.getParameter("id");
         if (aucId==null||"".equals(aucId)){
-            response.sendRedirect(basePath+"/getAllAuctionServlet");
+            response.sendRedirect(basePath+"/AuctionListServlet");
         }
         try {
             AuctionDO auctionDO = auctionDAO.getAuction(aucId);
@@ -35,7 +35,7 @@ public class AddCartServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect(basePath+"/getAllAuctionServlet");
+            response.sendRedirect(basePath+"/AuctionListServlet");
         }
 
     }

@@ -25,12 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <table>
       <tr ><td colspan="2" align="right">
-      	<jsp:include page="/common/web/top.jsp"/>
+      	<jsp:include page="/WebContent/common/web/top.jsp"/>
 
       </td></tr>
       <tr  valign="top">
       <td width="20%">
-      	<%@include file="/common/web/left.jspf" %>
+      	<%@include file="/WebContent/common/web/left.jspf" %>
       </td>
       <td align="center">
 

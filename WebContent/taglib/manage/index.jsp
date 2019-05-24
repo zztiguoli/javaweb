@@ -1,15 +1,15 @@
-<%@ page language="java"  pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>商品列表</title>
+    <title>My JSP 'index.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,33 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/common/web/top.jsp"/>
+    	<jsp:include page="/WebContent/common/manage/top.jsp"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/common/web/left.jspf" %>
+    	<%@include file="/WebContent/common/manage/left.jspf" %>
     </td>
-    <td align="center">
+    <td align="center" valign="middle" height="50%">
     
-    	<table border="1" >
-    	<tr>
-    		<td>商品编号</td>
-    		<td>商品标题</td>
-    		<td>商品描述</td>
-    		<td>商品价格</td>
-    		<td></td>
-    	</tr>
-			<c:forEach items="${auctionList }" var="auction" begin="0" step="1">
-				<tr>
-					<td>${auction.id }</td>
-					<td>${auction.title }</td>
-					<td>${auction.description }</td>
-					<td>${auction.price }</td>
-					<td><a href="${pageContext.servletContext.contextPath}/web/AddCartServlet?id=${auction.id }">加入购物车</a>
-				</tr>
-			</c:forEach>
-    	</table>
+    	欢迎使用本系统
     </td>
     <tr>
     

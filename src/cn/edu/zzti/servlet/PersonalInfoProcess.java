@@ -13,7 +13,9 @@ import cn.edu.zzti.dao.PersonalDAO;
 import cn.edu.zzti.dao.impl.constance.PersonalDAOImpl;
 import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
-@WebServlet("/PersonalInfoProcess")
+import cn.edu.zzti.util.PathConstence;
+
+@WebServlet(name="PersonalInfoProcess",urlPatterns = {"/servlet/PersonalInfoProcess"})
 public class PersonalInfoProcess extends HttpServlet {
 	PersonalDAO personalDAO = new PersonalDAOImpl();
 	
@@ -25,10 +27,11 @@ public class PersonalInfoProcess extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String uri = PathConstence.getBasePath(request.getParameter("type"));
 		UserDO u= null;
 		if(request.getSession().getAttribute("user")!=null){
 			u = (UserDO)request.getSession().getAttribute("user");
-			String targetPath = "GetPsersonalServlet";
+			String targetPath = PathConstence.M_SERVLET_BASE+"/GetPersonalServlet";
 			PersonalInfoDO p = new PersonalInfoDO();
 			p.setAge(Integer.parseInt(request.getParameter("age")));
 			p.setGender(request.getParameter("gender"));
@@ -68,7 +71,7 @@ public class PersonalInfoProcess extends HttpServlet {
 //			}
 			response.sendRedirect(request.getContextPath() + "/" +targetPath);
 		}else{
-			response.sendRedirect(request.getContextPath() + "/LoginPageView");
+			response.sendRedirect(request.getContextPath() + uri+"/login.jsp");
 		}
 		
 

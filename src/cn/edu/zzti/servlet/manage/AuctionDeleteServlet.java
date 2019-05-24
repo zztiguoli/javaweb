@@ -16,7 +16,7 @@ import cn.edu.zzti.util.PathConstence;
 /**
  * Servlet implementation class AuctionDeleteServlet
  */
-@WebServlet(name = "AuctionDeleteServlet",urlPatterns = { PathConstence.M_SERVLET_BASE+"/AuctionDeleteServlet"})
+@WebServlet(name = "AuctionDeleteServlet",urlPatterns = { "/manager/AuctionDeleteServlet"})
 public class AuctionDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	AuctionDAO auctionDAO =  (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);

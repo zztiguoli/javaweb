@@ -18,7 +18,7 @@ import java.sql.SQLException;
 /**
  * Created by guoli on 17/7/6.
  */
-@WebServlet(name="RegisteServlet",urlPatterns = {PathConstence.W_SERVLET_BASE+"/RegisteServlet"})
+@WebServlet(name="RegisteServlet",urlPatterns = {"/web/RegisteServlet"})
 public class RegisteServlet extends HttpServlet {
     UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

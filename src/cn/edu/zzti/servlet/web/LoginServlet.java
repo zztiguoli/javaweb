@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 
-@WebServlet(name="LoginServletWeb",urlPatterns = {PathConstence.W_SERVLET_BASE+"/LoginServlet"})
+@WebServlet(name="LoginServletWeb",urlPatterns = {"/web/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
 	UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);

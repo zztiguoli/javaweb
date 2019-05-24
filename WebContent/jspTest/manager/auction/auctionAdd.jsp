@@ -25,15 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/common/manage/top.jsp"/>
+    	<jsp:include page="../top.jsp"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/common/manage/left.jspf" %>
+    	<%@include file="../left.jspf" %>
     </td>
     <td align="center">
-        <form action="manage/AuctionAddServlet" method="POST">
+        <form action="<%=pageContext.getServletContext().getContextPath()%>/manage/AuctionAddServlet" method="POST">
     	<table>
     	    <tr>
     	        <td>商品标题</td>

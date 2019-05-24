@@ -16,7 +16,7 @@ import cn.edu.zzti.util.DAOFactory;
 import cn.edu.zzti.util.PathConstence;
 
 
-@WebServlet(name="PersonalInfoProcess",urlPatterns = {PathConstence.W_SERVLET_BASE+"/PersonalInfoProcess"})
+@WebServlet(name="PersonalInfoProcess",urlPatterns = {"/web/PersonalInfoProcess"})
 public class PersonalInfoProcess extends HttpServlet {
 	PersonalDAO personalDAO = (PersonalDAO) DAOFactory.getDAO(DAOFactory.PERSONAL_DAO_CLASS_NAME);;
 	

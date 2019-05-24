@@ -18,14 +18,16 @@ import cn.edu.zzti.util.PathConstence;
 
 /**
  * Created by guoli on 17/5/14.
+ * 当前Servlet是从数据访问层获取所有商品数据
+ * @return 会将所有的商品（List<AuctionDO>）存放到request作用域中
+ * param: type 要求请求该功能时必须传入参数type：1代表响应前台页面，2代表响应后台页面
  */
-@WebServlet("/AuctionListServlet")
+@WebServlet(name="AuctionListServlet",urlPatterns = {"/servlet/AuctionListServlet"})
 public class AuctionListServlet extends HttpServlet {
     AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String type = req.getParameter("type");
-        String uri ="jspByJavacode/" + ("1".equals(type) ? "/viewForUser":"/manager");
+        String uri = PathConstence.getBasePath(req.getParameter("type"));//获取响应的跟路径是前台还是后台
         List<AuctionDO> list =null;
 		try {
 			list = auctionDAO.getAll();
@@ -34,7 +36,7 @@ public class AuctionListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
         req.setAttribute("auctionList",list);
-        req.getRequestDispatcher(uri+"/getAllAuction.jsp").forward(req,resp);
+        req.getRequestDispatcher(uri+"/auction/auctionList.jsp").forward(req,resp);
     }
 
     @Override

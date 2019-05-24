@@ -52,12 +52,8 @@ public class DAOFactory {
         if(className!=null&&!"".equals(className)){
             try {
                 Class<? extends BaseDAO> clazz = (Class<? extends BaseDAO>)Class.forName(className);
-                return clazz.newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+                return clazz.getConstructor(null).newInstance();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

@@ -13,11 +13,12 @@ import cn.edu.zzti.dao.PersonalDAO;
 import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
 import cn.edu.zzti.util.DAOFactory;
+import cn.edu.zzti.util.PathConstence;
 
 /**
  * Servlet implementation class GetPsersonalServlet
  */
-@WebServlet("/GetPsersonalServlet")
+@WebServlet(name="GetPersonalServlet",urlPatterns ={"/servlet/GetPersonalServlet"} )
 public class GetPsersonalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	PersonalDAO personalDAO = (PersonalDAO) DAOFactory.getDAO(DAOFactory.PERSONAL_DAO_CLASS_NAME);
@@ -33,6 +34,8 @@ public class GetPsersonalServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+
+		String uri = PathConstence.getBasePath(request.getParameter("type"));
 		UserDO u= null;
 		if(request.getSession().getAttribute("user")!=null){
 			u = (UserDO)request.getSession().getAttribute("user");
@@ -46,7 +49,7 @@ public class GetPsersonalServlet extends HttpServlet {
 			request.setAttribute("personalInfo", personal);
 			request.getRequestDispatcher( "/PersonalInfoView").forward(request, response);
 		}else{
-			response.sendRedirect(request.getContextPath() + "/LoginPageView");
+			response.sendRedirect(request.getContextPath() + uri+"/login.jsp");
 		}
 	}
 

@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by guoli on 17/7/6.
  */
-@WebServlet(name="CartListServlet",urlPatterns = {PathConstence.W_SERVLET_BASE+"/CartListServlet"})
+@WebServlet(name="CartListServlet",urlPatterns = {"/web/CartListServlet"})
 public class CartListServlet extends HttpServlet {
     private TemporaryCartDAO temporaryCartDAO = (TemporaryCartDAO) DAOFactory.getDAO(DAOFactory.TEMPORARY_CART_DAO_CLASS_NAME);
 

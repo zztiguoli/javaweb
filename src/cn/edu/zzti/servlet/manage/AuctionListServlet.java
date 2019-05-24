@@ -19,7 +19,7 @@ import cn.edu.zzti.util.PathConstence;
 /**
  * Created by guoli on 17/5/14.
  */
-@WebServlet(name = "AuctionListServlet",urlPatterns = { PathConstence.M_SERVLET_BASE+"/AuctionListServlet"})
+@WebServlet(name = "AuctionListServlet",urlPatterns = { "/manager/AuctionListServlet"})
 public class AuctionListServlet extends HttpServlet {
     AuctionDAO auctionDAO =  (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override

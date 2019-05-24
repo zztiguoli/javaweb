@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>添加商品</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,16 +25,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/common/manage/top.jsp"/>
+    	<jsp:include page="/WebContent/common/manage/top.jsp"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/common/manage/left.jspf" %>
+    	<%@include file="/WebContent/common/manage/left.jspf" %>
     </td>
-    <td align="center" valign="middle" height="50%">
-    
-    	欢迎使用本系统
+    <td align="center">
+        <form action="manage/AuctionAddServlet" method="POST">
+    	<table>
+    	    <tr>
+    	        <td>商品标题</td>
+    	        <td><input type="text" name="title" size="60"/></td>
+    	    </tr>
+    	    <tr>
+                <td>商品简介</td>
+                <td><textarea name="auctionDescription" cols="60" rows="20"></textarea></td>
+            </tr>
+            <tr>
+                <td>商品价格</td>
+                <td><input type="text" name="price"/>元</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right"><input type="submit" value="保存商品"/></td>
+            </tr>
+    	</table>
+    	</form>
     </td>
     <tr>
     

@@ -1,10 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java"  pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ page import="cn.edu.zzti.entity.AuctionDO" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -26,12 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/common/manage/top.jsp"/>
+    	<jsp:include page="/WebContent/common/web/top.jsp"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/common/manage/left.jspf" %>
+    	<%@include file="/WebContent/common/web/left.jspf" %>
     </td>
     <td align="center">
     
@@ -43,16 +42,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<td>商品价格</td>
     		<td></td>
     	</tr>
-    	<c:forEach items="${auctionList }" var="list" begin="0" step="1">
-		    	<tr>
-		    		<td>${list.id }</td>
-		    		<td>${list.title }</td>
-		    		<td>${list.description }</td>
-		    		<td>${list.price }</td>
-		    		<td><a href="manage/AuctionDetailServlet?id=${list.id }">修改</a>&nbsp;
-		    		<a href="manage/AuctionDeleteServlet?id=${list.id }">删除</a></td>
-		    	</tr>
-    	</c:forEach>
+			<c:forEach items="${auctionList }" var="auction" begin="0" step="1">
+				<tr>
+					<td>${auction.id }</td>
+					<td>${auction.title }</td>
+					<td>${auction.description }</td>
+					<td>${auction.price }</td>
+					<td><a href="${pageContext.servletContext.contextPath}/web/AddCartServlet?id=${auction.id }">加入购物车</a>
+				</tr>
+			</c:forEach>
     	</table>
     </td>
     <tr>

@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import cn.edu.zzti.dao.UserDAO;
 import cn.edu.zzti.entity.UserDO;
 import cn.edu.zzti.util.DAOFactory;
-@WebServlet("/servlet/LoginServlet")
+import cn.edu.zzti.util.PathConstence;
+
+@WebServlet(name="LoginServlet",urlPatterns = {"/servlet/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
 	UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);
@@ -44,7 +46,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		UserDO user = new UserDO(username,password,new Date());
 		String type = request.getParameter("type");
-		String uri ="jspByJavacode/" + ("1".equals(type) ? "/viewForUser":"/manager");
 
 		String error = "";
 		try {
@@ -52,12 +53,11 @@ public class LoginServlet extends HttpServlet {
 			String targetPath = request.getContextPath();
 			if(error==null){
 				request.getSession().setAttribute("user", user);
-				targetPath = "/AuctionListServlet";;
+				targetPath = PathConstence.M_SERVLET_BASE + "/AuctionListServlet";
 				request.getRequestDispatcher(targetPath).forward(request, response);
 			}else{
-				//request.setAttribute("error", error);
 
-				targetPath = request.getContextPath() + uri + "/login.jsp?error="+ URLEncoder.encode(error,"UTF-8");
+				targetPath += PathConstence.getBasePath(request.getParameter(type)) + "/login.jsp?error="+ URLEncoder.encode(error,"UTF-8");
 				response.sendRedirect(targetPath);
 			}
 

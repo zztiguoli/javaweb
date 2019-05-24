@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +13,13 @@ import cn.edu.zzti.dao.AuctionDAO;
 import cn.edu.zzti.dao.impl.constance.AuctionDAOImpl;
 import cn.edu.zzti.entity.AuctionDO;
 import cn.edu.zzti.util.DAOFactory;
+import cn.edu.zzti.util.PathConstence;
 
 /**
  * 商品添加控制层代码
  * Created by guoli on 17/5/14.
  */
+@WebServlet(name="AuctionAddServlet",urlPatterns = {"/servlet/AuctionAddServlet"})
 public class AuctionAddServlet extends HttpServlet {
     AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
@@ -33,7 +36,7 @@ public class AuctionAddServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        resp.sendRedirect(this.getServletContext().getContextPath()+"/auction/list");
+        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.JSP_WEB_BASE+"/auction/auctionList.jsp");
 
     }
 

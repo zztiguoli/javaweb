@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by guoli on 17/7/6.
  */
-@WebServlet(name="getAllAuctionServlet",urlPatterns = {PathConstence.W_SERVLET_BASE+"/getAllAuction"})
+@WebServlet(name="getAllAuctionServlet",urlPatterns = {"/web/getAllAuction"})
 public class getAllAuctionServlet extends HttpServlet {
     AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
