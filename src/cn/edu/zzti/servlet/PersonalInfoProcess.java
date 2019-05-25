@@ -15,7 +15,7 @@ import cn.edu.zzti.entity.PersonalInfoDO;
 import cn.edu.zzti.entity.UserDO;
 import cn.edu.zzti.util.PathConstence;
 
-@WebServlet(name="PersonalInfoProcess",urlPatterns = {"/servlet/PersonalInfoProcess"})
+@WebServlet(name="PersonalInfoProcessDemo",urlPatterns = {"/servlet/PersonalInfoProcess"})
 public class PersonalInfoProcess extends HttpServlet {
 	PersonalDAO personalDAO = new PersonalDAOImpl();
 	

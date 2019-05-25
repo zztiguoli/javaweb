@@ -14,7 +14,7 @@ import cn.edu.zzti.entity.UserDO;
 import cn.edu.zzti.util.DAOFactory;
 import cn.edu.zzti.util.PathConstence;
 
-@WebServlet(name="LoginServletManage",urlPatterns = {"/manager/LoginServlet"})
+@WebServlet(name="LoginServletManage",urlPatterns = {"/manage/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
 	UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);

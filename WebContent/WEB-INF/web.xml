@@ -5,7 +5,7 @@
 	version="2.5">
 	<display-name></display-name>
 	<welcome-file-list>
-		<welcome-file>/servlet/LoginPageView</welcome-file>
+		<welcome-file>/jspTest/web/login.jsp</welcome-file>
 	</welcome-file-list>
 	
 	

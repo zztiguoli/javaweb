@@ -19,7 +19,7 @@ import cn.edu.zzti.util.PathConstence;
  * 商品添加控制层代码
  * Created by guoli on 17/5/14.
  */
-@WebServlet(name="AuctionAddServlet",urlPatterns = {"/servlet/AuctionAddServlet"})
+@WebServlet(name="AuctionAddServletDemo",urlPatterns = {"/servlet/AuctionAddServlet"})
 public class AuctionAddServlet extends HttpServlet {
     AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override

@@ -1,5 +1,5 @@
 
-<%@ page import="cn.edu.zzti.entity.CartDO" %>
+<%@ page import="cn.edu.zzti.entity.CartDO,cn.edu.zzti.util.PathConstence,java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -11,12 +11,11 @@
 
 <table>
     <tr ><td colspan="2" align="right">
-        <jsp:include page="/WebContent/common/web/top.jsp"/>
-
+        <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
     </td></tr>
     <tr  valign="top">
         <td width="20%">
-            <%@include file="/WebContent/WEB-INF/classes/WebContent/common/web/left.jspf" %>
+            <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
         </td>
         <td align="center">
 

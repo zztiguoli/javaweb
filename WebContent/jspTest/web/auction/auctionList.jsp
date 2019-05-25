@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ page import="cn.edu.zzti.entity.AuctionDO,java.util.ArrayList" %>
+<%@ page import="cn.edu.zzti.entity.AuctionDO,java.util.ArrayList,cn.edu.zzti.util.PathConstence" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,7 @@
     </tr>
     <%
         Object o = request.getAttribute("auctionList");
+        String detailPath = pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE+"/AuctionDetailServlet?id=";
         ArrayList<AuctionDO> aucList = null;
         if(o!=null){
             aucList = (ArrayList<AuctionDO>)o;
@@ -26,14 +27,14 @@
         <td><%=i+1%></td>
         <td><%=aucList.get(i).getTitle()%></td>
         <td><%=aucList.get(i).getPrice()%></td>
-        <td><a href="">查看详情</a>
+        <td>
+            <a href="<%=detailPath+aucList.get(i).getId()%>">查看详情</a>
         <a href="">加入购物车</a>
         </td>
     </tr>
     <%
             }
         }
-
     %>
 </table>
 </body>

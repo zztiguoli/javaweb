@@ -18,7 +18,7 @@ import java.sql.SQLException;
 /**
  * Created by guoli on 17/7/10.
  */
-@WebServlet(name="AddCartServlet",urlPatterns = { "/servlet/AddCartServlet"})
+@WebServlet(name="AddCartServletDemo",urlPatterns = { "/servlet/AddCartServlet"})
 public class AddCartServlet extends HttpServlet {
     private TemporaryCartDAO temporaryCartDAO = (TemporaryCartDAO) DAOFactory.getDAO(DAOFactory.TEMPORARY_CART_DAO_CLASS_NAME);
     private AuctionDAO auctionDAO = (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);

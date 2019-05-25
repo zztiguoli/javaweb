@@ -1,22 +1,21 @@
-package cn.edu.zzti.servlet.manage;
+package cn.edu.zzti.servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import cn.edu.zzti.dao.AuctionDAO;
+import cn.edu.zzti.util.DAOFactory;
+import cn.edu.zzti.util.PathConstence;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import cn.edu.zzti.dao.AuctionDAO;
-import cn.edu.zzti.util.DAOFactory;
-import cn.edu.zzti.util.PathConstence;
+import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Servlet implementation class AuctionDeleteServlet
  */
-@WebServlet(name = "AuctionDeleteServlet",urlPatterns = { "/manage/AuctionDeleteServlet"})
+@WebServlet(name = "AuctionDeleteServletDemo",urlPatterns = { "/servlet/AuctionDeleteServlet"})
 public class AuctionDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	AuctionDAO auctionDAO =  (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
@@ -32,7 +31,7 @@ public class AuctionDeleteServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
-        resp.sendRedirect(this.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE+"/AuctionListServlet");
+        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.JSP_WEB_BASE+"/AuctionListServlet");
 
     }
 

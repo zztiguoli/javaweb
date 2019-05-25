@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,cn.edu.zzti.util.PathConstence" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,12 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/WebContent/WEB-INF/classes/WebContent/common/manage/top.jsp"/>
+    	<jsp:include page="<%=PathConstence.WEB_TOP%>"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/WebContent/common/manage/left.jspf" %>
+        <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
     </td>
     <td align="center">
         <%

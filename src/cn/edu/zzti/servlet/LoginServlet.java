@@ -3,7 +3,6 @@ package cn.edu.zzti.servlet;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -17,7 +16,7 @@ import cn.edu.zzti.entity.UserDO;
 import cn.edu.zzti.util.DAOFactory;
 import cn.edu.zzti.util.PathConstence;
 
-@WebServlet(name="LoginServlet",urlPatterns = {"/servlet/LoginServlet"})
+@WebServlet(name="LoginServletDemo",urlPatterns = {"/servlet/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
 	UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOFactory.USER_DAO_CLASS_NAME);

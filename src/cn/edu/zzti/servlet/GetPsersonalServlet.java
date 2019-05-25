@@ -18,7 +18,7 @@ import cn.edu.zzti.util.PathConstence;
 /**
  * Servlet implementation class GetPsersonalServlet
  */
-@WebServlet(name="GetPersonalServlet",urlPatterns ={"/servlet/GetPersonalServlet"} )
+@WebServlet(name="GetPersonalServletDemo",urlPatterns ={"/servlet/GetPersonalServlet"} )
 public class GetPsersonalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	PersonalDAO personalDAO = (PersonalDAO) DAOFactory.getDAO(DAOFactory.PERSONAL_DAO_CLASS_NAME);

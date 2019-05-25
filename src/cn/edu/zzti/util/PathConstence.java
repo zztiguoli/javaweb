@@ -6,9 +6,9 @@ package cn.edu.zzti.util;
 public class PathConstence {
 	/**
 	 * 后台管理页面的根目录
-     * 1、/jsp/manager目录下的都是使用JSP脚本代码实现，未标签化的内容
-     * 2、/taglib/manager目录下的都是标签化后的代码实现
-     * 3、/jspTest/manager目录下的都是课堂上的练习代码
+     * 1、/jsp/manage目录下的都是使用JSP脚本代码实现，未标签化的内容
+     * 2、/taglib/manage目录下的都是标签化后的代码实现
+     * 3、/jspTest/manage目录下的都是课堂上的练习代码
 	 */
     public static final String JSP_MANAGE_BASE="/jspTest/manage";
     /**
@@ -20,7 +20,7 @@ public class PathConstence {
     public static final String JSP_WEB_BASE="/jspTest/web";
     /**
      * 后台管理的Servlet的根目录
-     * * 1、/manager 路径下的内容都是经过测试的代码，每个功能都是拆开来写的
+     * * 1、/manage 路径下的内容都是经过测试的代码，每个功能都是拆开来写的
      *   2、/servlet 路径的内容是可以进行修改的，对应的servlet的包在cn.edu.zzti.servlet下面的哪些控制类都可以进行修改，这里是前后台使用的统一的Servlet。
      */
     public static final String M_SERVLET_BASE="/servlet";
@@ -30,6 +30,9 @@ public class PathConstence {
      * 2、/servlet 路径的内容是可以进行修改的，对应的servlet的包在cn.edu.zzti.servlet下面的哪些控制类都可以进行修改，这里是前后台使用的统一的Servlet。
      */
     public static final String W_SERVLET_BASE="/servlet";
+
+    public static final String WEB_TOP = JSP_WEB_BASE + "/top.jsp";
+    public static final String WEB_LEFT =  JSP_WEB_BASE + "/left.jsp";
 
     /**
      *
