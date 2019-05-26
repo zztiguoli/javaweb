@@ -16,12 +16,12 @@
 
 <table>
     <tr ><td colspan="2" align="right">
-        <jsp:include page="/WebContent/common/web/top.jsp"/>
+        <jsp:include page="${pageContext.servletContext.contextPath}/common/web/top.jsp"/>
 
     </td></tr>
     <tr  valign="top">
         <td width="20%">
-            <%@include file="/WebContent/common/web/left.jspf" %>
+            <%@include file="/common/web/left.jspf" %>
         </td>
         <td align="center">
 

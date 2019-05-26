@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "AuctionEditServletDemo",urlPatterns = {"/servlet/AuctionEditServlet"})
+@WebServlet(name = "AuctionEditServletDemo",urlPatterns = {"/servlet/AuctionUpdateServlet"})
 public class AuctionEditServlet extends HttpServlet {
     AuctionDAO auctionDAO =  (AuctionDAO) DAOFactory.getDAO(DAOFactory.AUCTION_DAO_CLASS_NAME);
     @Override
@@ -31,7 +31,11 @@ public class AuctionEditServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         };
-        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.JSP_WEB_BASE+"/AuctionListServlet");
+        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.M_SERVLET_BASE+"/AuctionListServlet");
 
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

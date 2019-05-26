@@ -27,7 +27,7 @@ public class CartListServlet extends HttpServlet {
         UserDO user = (UserDO)session.getAttribute("user");
         List<CartDO> list = this.temporaryCartDAO.getAllFromCart(user.getUsername());
         request.setAttribute("cartList",list);
-        request.getRequestDispatcher(PathConstence.JSP_WEB_BASE+"/shoppingCart/myShoppingCart.jsp").forward(request,response);
+        request.getRequestDispatcher(session.getAttribute("sessionType")+"/shoppingCart/myShoppingCart.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

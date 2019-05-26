@@ -25,12 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-    	<jsp:include page="/WebContent/common/manage/top.jsp"/>
+    	<jsp:include page="${pageContext.servletContext.contextPath}/common/manage/top.jsp"/>
     	
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-    	<%@include file="/WebContent/common/manage/left.jspf" %>
+    	<%@include file="/common/manage/left.jspf" %>
     </td>
    <td align="center">
         <form action="manage/AuctionUpdateServlet" method="POST">

@@ -36,8 +36,8 @@ public class AuctionListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
         req.setAttribute("auctionList",list);
-        String uri = PathConstence.getBasePath(req.getParameter("type"));//获取响应的跟路径是前台还是后台
-        req.getRequestDispatcher(uri+"/auction/auctionList.jsp").forward(req,resp);
+
+        req.getRequestDispatcher(req.getSession().getAttribute("sessionType")+"/auction/auctionList.jsp").forward(req,resp);
     }
 
     @Override

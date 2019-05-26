@@ -71,7 +71,7 @@ public class PersonalInfoProcess extends HttpServlet {
 //			}
 			response.sendRedirect(request.getContextPath() + "/" +targetPath);
 		}else{
-			response.sendRedirect(request.getContextPath() + uri+"/login.jsp");
+			response.sendRedirect(request.getContextPath() +request.getSession().getAttribute("sessionType")+"/login.jsp");
 		}
 		
 

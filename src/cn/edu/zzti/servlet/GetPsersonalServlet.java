@@ -49,7 +49,7 @@ public class GetPsersonalServlet extends HttpServlet {
 			request.setAttribute("personalInfo", personal);
 			request.getRequestDispatcher( "/PersonalInfoView").forward(request, response);
 		}else{
-			response.sendRedirect(request.getContextPath() + uri+"/login.jsp");
+			response.sendRedirect(request.getContextPath() + request.getSession().getAttribute("sessionType")+"/login.jsp");
 		}
 	}
 

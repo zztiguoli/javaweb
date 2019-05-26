@@ -9,6 +9,15 @@
 </head>
 <body>
 <table>
+    <tr ><td colspan="2" align="right">
+        <jsp:include page="<%=PathConstence.MANAGE_TOP%>"/>
+    </td></tr>
+    <tr  valign="top">
+        <td width="20%">
+            <jsp:include page="<%=PathConstence.MANAGE_LEFT%>"/>
+        </td>
+        <td align="center">
+<table>
     <tr>
         <td>商品序号</td>
         <td>商品名称</td>
@@ -26,9 +35,9 @@
 <td><%=i+1%></td>
 <td><%=aucList.get(i).getTitle()%></td>
     <td><%=aucList.get(i).getPrice()%></td>
-    <td><a href="<%=pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE%>/AuctionDetailServlet?id=<%=aucList.get(i).getId()%>">查看详情</a>
+    <td>
         <a href="<%=pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE%>/AuctionDeleteServlet?id=<%=aucList.get(i).getId()%>">删除商品</a>
-        <a href="<%=pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE%>/AuctionEditServlet?id=<%=aucList.get(i).getId()%>">修改商品</a>
+        <a href="<%=pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE%>/AuctionDetailServlet?id=<%=aucList.get(i).getId()%>">修改商品</a>
     </td>
 </tr>
 <%
@@ -37,5 +46,6 @@
 
 %>
 </table>
+        </td></tr></table>
 </body>
 </html>

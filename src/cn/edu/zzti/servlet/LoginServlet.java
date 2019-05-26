@@ -44,20 +44,22 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserDO user = new UserDO(username,password,new Date());
-		String type = request.getParameter("type");
 
+		String targetPath = request.getContextPath()+"/";
 		String error = "";
 		try {
 			error = checkLogin(user);
-			String targetPath = request.getContextPath();
+			targetPath = request.getContextPath();
 			if(error==null){
+				//在登录模块中需要在session、中设置两个数值：1、当前的登录用户，2、当前登录用户的登录端，前台还是后台
 				request.getSession().setAttribute("user", user);
-				targetPath = PathConstence.M_SERVLET_BASE + "/AuctionListServlet";
-				request.getRequestDispatcher(targetPath).forward(request, response);
+				request.getSession().setAttribute("sessionType",PathConstence.getRequestPath(request));
+				targetPath += PathConstence.M_SERVLET_BASE + "/AuctionListServlet";
+
 			}else{
 
-				targetPath += PathConstence.getBasePath(request.getParameter(type)) + "/login.jsp?error="+ URLEncoder.encode(error,"UTF-8");
-				response.sendRedirect(targetPath);
+				targetPath += PathConstence.getRequestPath(request)+ "/login.jsp?error="+ URLEncoder.encode(error,"UTF-8");
+
 			}
 
 		} catch (SQLException e) {
@@ -65,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-
+		response.sendRedirect(targetPath);
 
 	}
 

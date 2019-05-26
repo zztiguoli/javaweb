@@ -33,7 +33,8 @@ public class AuctionDetailServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	       req.getRequestDispatcher( PathConstence.getBasePath(req.getParameter("type"))+"/auction/auctionDetail.jsp").forward(req, resp);
+
+	       req.getRequestDispatcher( req.getSession().getAttribute("sessionType")+"/auction/auctionDetail.jsp").forward(req, resp);
 	     //   resp.sendRedirect(this.getServletContext().getContextPath()+"/auctionJSTL/auctionDetail.jsp");
 
 	    }
