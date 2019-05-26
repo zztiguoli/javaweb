@@ -25,11 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-        <jsp:include page="<%=PathConstence.WEB_TOP%>"/>
+        <jsp:include page="<%=PathConstence.MANAGE_TOP%>"/>
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-        <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
+        <jsp:include page="<%=PathConstence.MANAGE_LEFT%>"/>
     </td>
     <td align="center">
         <%
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <%
             AuctionDO auctionDO = (AuctionDO)request.getAttribute("auctionDO");
         %>
-        <form action="<%=pageContext.getServletContext().getContextPath()%>/manage/AuctionUpdateServlet" method="POST">
+        <form action="<%=pageContext.getServletContext().getContextPath()+PathConstence.M_SERVLET_BASE%>/AuctionUpdateServlet" method="POST">
             <table>
                 <tr>
                     <td>商品标题</td>

@@ -11,7 +11,7 @@
 
 <table>
     <tr ><td colspan="2" align="right">
-        <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
+        <jsp:include page="<%=PathConstence.WEB_TOP%>"/>
     </td></tr>
     <tr  valign="top">
         <td width="20%">

@@ -1,5 +1,9 @@
 package cn.edu.zzti.util;
 
+import javax.servlet.http.HttpServletRequest;
+import java.net.http.HttpRequest;
+import java.util.Arrays;
+
 /**
  * Created by guoli on 2017/7/11.
  */
@@ -33,6 +37,8 @@ public class PathConstence {
 
     public static final String WEB_TOP = JSP_WEB_BASE + "/top.jsp";
     public static final String WEB_LEFT =  JSP_WEB_BASE + "/left.jsp";
+    public static final String MANAGE_TOP = JSP_MANAGE_BASE + "/top.jsp";
+    public static final String MANAGE_LEFT = JSP_MANAGE_BASE + "/left.jsp";
 
     /**
      *
@@ -43,4 +49,19 @@ public class PathConstence {
         return "1".equals(type) ? PathConstence.JSP_WEB_BASE:PathConstence.JSP_MANAGE_BASE;
     }
 
+    /**
+     * 该方法通过分析请求源路径，判断当前的请求是为了请求Web、还是后台
+     * @param request
+     * @return
+     */
+    public static String getRequestPath(HttpServletRequest request){
+        String referer = request.getHeader("referer");
+
+        if(referer.contains(JSP_MANAGE_BASE)){
+            return JSP_MANAGE_BASE;
+        }else{
+            return JSP_WEB_BASE;
+        }
+
+    }
 }

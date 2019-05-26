@@ -25,11 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <table>
     <tr ><td colspan="2" align="right">
-        <jsp:include page="<%=PathConstence.WEB_TOP%>"/>
+        <jsp:include page="<%=PathConstence.MANAGE_TOP%>"/>
     </td></tr>
     <tr  valign="top">
     <td width="20%">
-        <jsp:include page="<%=PathConstence.WEB_LEFT%>"/>
+        <jsp:include page="<%=PathConstence.MANAGE_LEFT%>"/>
     </td>
     <td align="center">
         <form action="<%=pageContext.getServletContext().getContextPath()%>/manage/AuctionAddServlet" method="POST">

@@ -31,7 +31,7 @@ public class AuctionDeleteServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
-        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.JSP_WEB_BASE+"/AuctionListServlet");
+        resp.sendRedirect(this.getServletContext().getContextPath()+ PathConstence.M_SERVLET_BASE+"/AuctionListServlet");
 
     }
 
